@@ -1,25 +1,20 @@
-from .api import (
-    create,
-    create_from_request,
-    create_from_topic,
-    save_audio,
-)
-from .datatypes import (
-    Prompt,
-    RiffRequest,
-    RiffResponse,
+from .api import RiffAPIClient
+
+from .types import (
+    PromptRequest,
+    PromptResponse,
+    ComposeRequest,
+    ComposeResponse,
+    SoundPrompt,
     TimestampedWord,
-    TopicRequest,
 )
 
 __all__ = [
-    "Prompt",
-    "RiffRequest",
-    "RiffResponse",
+    "PromptRequest",
+    "PromptResponse",
+    "ComposeRequest",
+    "ComposeResponse",
+    "RiffAPIClient",
+    "SoundPrompt",
     "TimestampedWord",
-    "TopicRequest",
-    "create",
-    "create_from_request",
-    "create_from_topic",
-    "save_audio",
 ]
