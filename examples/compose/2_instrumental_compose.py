@@ -12,4 +12,4 @@ response = client.compose(
     ],
 )
 
-client.save_audio(response.audio_b64, "2_instrumental.m4a")
+client.save_audio(response.audio_b64, "2_instrumental_compose.m4a")
