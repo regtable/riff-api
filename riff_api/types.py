@@ -45,6 +45,9 @@ class PromptResponse(BaseModel):
 
     audio_b64: str
     """ Base64 encoded bytes of the requested audio format """
+    
+    title: str
+    """ Title of the song. """
 
 
 class ComposeRequest(BaseModel):
@@ -96,6 +99,9 @@ class ComposeResponse(BaseModel):
 
     audio_format: T.Literal["m4a"]
     """ Format of the returned audio """
+
+    title: str
+    """ Title of the song. """
 
 
 class SoundPrompt(BaseModel):
