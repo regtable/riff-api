@@ -31,11 +31,11 @@ response = client.compose(
     sound_prompts=[
         SoundPrompt(
             text="punk rock",
-            strength=4.0,
+            strength=0.4,
         ),
         SoundPrompt(
             text="tribal chanting and drums",
-            strength=6.0,
+            strength=0.6,
         ),
     ],
     lyrics=lyrics,

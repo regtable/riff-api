@@ -22,7 +22,7 @@ response = requests.post(
 response.raise_for_status()
 data = response.json()
 
-output_path = "2_request.m4a"
+output_path = "3_request.m4a"
 with open(output_path, "wb") as f:
     f.write(base64.b64decode(data["audio_b64"]))
 
