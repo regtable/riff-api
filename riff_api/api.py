@@ -38,6 +38,7 @@ class RiffAPIClient:
         instrumental: bool = False,
         audio_format: T.Literal["m4a"] = "m4a",
         save_to: str | None = None,
+        moderate_inputs: bool = True,
     ) -> types.PromptResponse:
         """
         Create a song from a single text description of the sound and lyrics
@@ -47,6 +48,7 @@ class RiffAPIClient:
             prompt=prompt,
             instrumental=instrumental,
             audio_format=audio_format,
+            moderate_inputs=moderate_inputs,
         )
 
         response = requests.post(
@@ -74,7 +76,7 @@ class RiffAPIClient:
         lyrics_strength: float = 0.5,
         seed: int | None = None,
         audio_format: T.Literal["m4a"] = "m4a",
-        moderate_inputs: bool = False,
+        moderate_inputs: bool = True,
         weirdness: float = 0.5,
         save_to: str | None = None,
     ) -> types.ComposeResponse:

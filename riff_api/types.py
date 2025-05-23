@@ -19,6 +19,9 @@ class PromptRequest(BaseModel):
     audio_format: T.Literal["m4a"] = "m4a"
     """ Audio format to return """
 
+    moderate_inputs: bool = True
+    """ If True, runs moderation checks on the prompts and lyrics """
+
 
 class PromptResponse(BaseModel):
     """
