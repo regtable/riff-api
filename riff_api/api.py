@@ -57,14 +57,18 @@ class RiffAPIClient:
             headers={"Api-Key": self.api_key},
         )
 
-        response.raise_for_status()
+        if response.status_code != 200:
+            error_detail = f"HTTP {response.status_code} error"
+            if response.text:
+                error_detail += f"\n{response.text}"
+            raise requests.exceptions.HTTPError(error_detail)
 
         response_type = types.PromptResponse(**response.json())
 
         if save_to is not None:
-            assert (
-                request.audio_format == save_to.split(".")[-1]
-            ), "The save extension must match the audio format"
+            assert request.audio_format == save_to.split(".")[-1], (
+                "The save extension must match the audio format"
+            )
             self.save_audio(response_type.audio_b64, save_to)
 
         return response_type
@@ -99,14 +103,18 @@ class RiffAPIClient:
             headers={"Api-Key": self.api_key},
         )
 
-        response.raise_for_status()
+        if response.status_code != 200:
+            error_detail = f"HTTP {response.status_code} error"
+            if response.text:
+                error_detail += f"\n{response.text}"
+            raise requests.exceptions.HTTPError(error_detail)
 
         response_type = types.ComposeResponse(**response.json())
 
         if save_to is not None:
-            assert (
-                request.audio_format == save_to.split(".")[-1]
-            ), "The save extension must match the audio format"
+            assert request.audio_format == save_to.split(".")[-1], (
+                "The save extension must match the audio format"
+            )
             self.save_audio(response_type.audio_b64, save_to)
 
         return response_type
