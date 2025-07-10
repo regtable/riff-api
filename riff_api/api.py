@@ -39,6 +39,7 @@ class RiffAPIClient:
         audio_format: T.Literal["m4a"] = "m4a",
         save_to: str | None = None,
         moderate_inputs: bool = True,
+        model: T.Literal["FUZZ 1.0", "FUZZ 1.1"] = "FUZZ 1.1",
     ) -> types.PromptResponse:
         """
         Create a song from a single text description of the sound and lyrics
@@ -49,6 +50,7 @@ class RiffAPIClient:
             instrumental=instrumental,
             audio_format=audio_format,
             moderate_inputs=moderate_inputs,
+            model=model,
         )
 
         response = requests.post(
@@ -83,6 +85,7 @@ class RiffAPIClient:
         moderate_inputs: bool = True,
         weirdness: float = 0.5,
         save_to: str | None = None,
+        model: T.Literal["FUZZ 1.0", "FUZZ 1.1"] = "FUZZ 1.1",
     ) -> types.ComposeResponse:
         """
         Create a song using lyrics a list of sound prompts
@@ -95,6 +98,7 @@ class RiffAPIClient:
             seed=seed,
             moderate_inputs=moderate_inputs,
             weirdness=weirdness,
+            model=model,
         )
 
         response = requests.post(
