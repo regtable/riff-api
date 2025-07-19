@@ -85,7 +85,7 @@ class RiffAPIClient:
         moderate_inputs: bool = True,
         weirdness: float = 0.5,
         save_to: str | None = None,
-        model: T.Literal["FUZZ 1.0", "FUZZ 1.1"] = "FUZZ 1.1",
+        model: T.Literal["FUZZ 1.0", "FUZZ 1.1", "FUZZ lite"] = "FUZZ 1.1",
     ) -> types.ComposeResponse:
         """
         Create a song using lyrics a list of sound prompts
