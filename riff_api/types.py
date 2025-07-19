@@ -79,7 +79,7 @@ class ComposeRequest(BaseModel):
     weirdness: float = 0.5
     """ Weirdness of the generated audio, [0, 1] """
 
-    model: T.Literal["FUZZ 1.0", "FUZZ 1.1"] = "FUZZ 1.1"
+    model: T.Literal["FUZZ 1.0", "FUZZ 1.1", "FUZZ lite"] = "FUZZ 1.1"
     """Model version to use"""
 
 
