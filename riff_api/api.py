@@ -39,7 +39,7 @@ class RiffAPIClient:
         audio_format: T.Literal["m4a"] = "m4a",
         save_to: str | None = None,
         moderate_inputs: bool = True,
-        model: T.Literal["FUZZ 1.0", "FUZZ 1.1"] = "FUZZ 1.1",
+        model: T.Literal["FUZZ 1.0", "FUZZ 1.1", "Ocelot", "Jerboa"] = "FUZZ 1.1",
     ) -> types.PromptResponse:
         """
         Create a song from a single text description of the sound and lyrics
@@ -63,7 +63,7 @@ class RiffAPIClient:
             error_detail = f"HTTP {response.status_code} error"
             if response.text:
                 error_detail += f"\n{response.text}"
-            raise requests.exceptions.HTTPError(error_detail)
+            raise requests.exceptions.HTTPError(error_detail, response=response)
 
         response_type = types.PromptResponse(**response.json())
 
@@ -85,7 +85,9 @@ class RiffAPIClient:
         moderate_inputs: bool = True,
         weirdness: float = 0.5,
         save_to: str | None = None,
-        model: T.Literal["FUZZ 1.0", "FUZZ 1.1", "FUZZ lite"] = "FUZZ 1.1",
+        model: T.Literal[
+            "FUZZ 1.0", "FUZZ 1.1", "FUZZ lite", "Ocelot", "Jerboa"
+        ] = "FUZZ 1.1",
     ) -> types.ComposeResponse:
         """
         Create a song using lyrics a list of sound prompts
@@ -111,7 +113,7 @@ class RiffAPIClient:
             error_detail = f"HTTP {response.status_code} error"
             if response.text:
                 error_detail += f"\n{response.text}"
-            raise requests.exceptions.HTTPError(error_detail)
+            raise requests.exceptions.HTTPError(error_detail, response=response)
 
         response_type = types.ComposeResponse(**response.json())
 

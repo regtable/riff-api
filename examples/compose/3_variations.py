@@ -1,6 +1,7 @@
 """
 Hold a constant seed while modifying other parameters to create variations.
 """
+
 from riff_api import RiffAPIClient, SoundPrompt
 
 lyrics = """
