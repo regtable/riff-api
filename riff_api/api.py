@@ -39,7 +39,7 @@ class RiffAPIClient:
         audio_format: T.Literal["m4a"] = "m4a",
         save_to: str | None = None,
         moderate_inputs: bool = True,
-        model: T.Literal["FUZZ 1.0", "FUZZ 1.1", "Ocelot", "Jerboa"] = "FUZZ 1.1",
+        model: str = "FUZZ-2.0",
     ) -> types.PromptResponse:
         """
         Create a song from a single text description of the sound and lyrics
@@ -85,9 +85,7 @@ class RiffAPIClient:
         moderate_inputs: bool = True,
         weirdness: float = 0.5,
         save_to: str | None = None,
-        model: T.Literal[
-            "FUZZ 1.0", "FUZZ 1.1", "FUZZ lite", "Ocelot", "Jerboa"
-        ] = "FUZZ 1.1",
+        model: str = "FUZZ-2.0",
     ) -> types.ComposeResponse:
         """
         Create a song using lyrics a list of sound prompts
@@ -124,6 +122,23 @@ class RiffAPIClient:
             self.save_audio(response_type.audio_b64, save_to)
 
         return response_type
+
+    def models(self) -> list[str]:
+        """
+        Get the list of available models
+        """
+        response = requests.get(
+            url=f"{self.api_url}/models",
+            headers={"Api-Key": self.api_key},
+        )
+
+        if response.status_code != 200:
+            error_detail = f"HTTP {response.status_code} error"
+            if response.text:
+                error_detail += f"\n{response.text}"
+            raise requests.exceptions.HTTPError(error_detail, response=response)
+
+        return response.json()
 
     @staticmethod
     def save_audio(
