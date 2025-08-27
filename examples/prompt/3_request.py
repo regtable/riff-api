@@ -12,7 +12,7 @@ response = requests.post(
     f"{api_url}/prompt",
     headers={
         "Content-Type": "application/json",
-        "Api-Key": os.environ.get("RIFFUSION_API_KEY"),
+        "Api-Key": os.environ["RIFFUSION_API_KEY"],
     },
     json={
         "prompt": "Indie pop banger about my dog Boris",

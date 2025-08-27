@@ -1,6 +1,7 @@
 """
 Use two sound prompts with different strengths to fine tune the output.
 """
+
 from riff_api import RiffAPIClient, SoundPrompt
 
 lyrics = """

@@ -22,6 +22,9 @@ class PromptRequest(BaseModel):
     moderate_inputs: bool = True
     """ If True, runs moderation checks on the prompts and lyrics """
 
+    model: str = "FUZZ-2.0"
+    """Model version to use"""
+
 
 class PromptResponse(BaseModel):
     """
@@ -45,7 +48,7 @@ class PromptResponse(BaseModel):
 
     audio_b64: str
     """ Base64 encoded bytes of the requested audio format """
-    
+
     title: str
     """ Title of the song. """
 
@@ -75,6 +78,9 @@ class ComposeRequest(BaseModel):
 
     weirdness: float = 0.5
     """ Weirdness of the generated audio, [0, 1] """
+
+    model: str = "FUZZ-2.0"
+    """Model version to use"""
 
 
 class ComposeResponse(BaseModel):

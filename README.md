@@ -49,11 +49,18 @@ Get creative with your topics! Here are a few ideas:
 
 Currently the API only supports returning base64 encoded bytes of an m4a file.
 
+Both `/prompt` and `/compose` accept an optional `model` argument to select
+the model to use. The default is `"FUZZ 2.0"`.
+
 ### `/compose`
 
 This endpoint provides a more powerful capability for music lovers to craft the exact sound they want. You can specify custom lyrics and multiple sound prompts with individually controllable strengths for deeper control.
 
 The returned output contains detailed timestamps for each word in the lyrics.
+
+### `/models`
+
+This endpoint returns the list of available models based on your API key.
 
 ## Repo
 
